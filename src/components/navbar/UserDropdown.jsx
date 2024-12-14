@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const UserDropdown = () => {
@@ -21,8 +21,8 @@ const UserDropdown = () => {
             </div>
 
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 p-4 shadow space-y-2">
-                <li><a>Item</a></li>
-                <li><a>Item 2</a></li>
+                <p className=" p-1 bg-slate-200 text-sm font-semibold text-center">User: {user?.displayName}</p>
+                <li><NavLink to={'/dashboard/overview'}>Dashboard</NavLink></li>
                 <li>
                     <button onClick={handleLogOut} className=" btn btn-primary btn-outline text-center">Log Out</button>
                 </li>

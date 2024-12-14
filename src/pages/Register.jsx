@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form"
 import GoogleLogIn from "../components/socialLogIn/GoogleLogIn";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { CreateUser } = useAuth();
@@ -9,13 +11,36 @@ const Register = () => {
     const { register, handleSubmit, watch, formState: { errors }, } = useForm()
 
     const onSubmit = (data) => {
+
+        const email = data.email;
+        const role = data.role;
+        const status = role === "buyer" ? "approved" : "pending";
+        const wishlist = [];
+
+        const userData = {
+            email, role, status, wishlist
+        }
+        // console.log(userData);
+
         CreateUser(data.email, data.password)
-            .then(res => {
-                console.log(res.user);
-                navigate('/login');
+            .then(() => {
+                axios.post(`http://localhost:4000/users`, userData)
+                    .then(
+                        res => {
+                            console.log(res.data);
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "Account Created!",
+                                    icon: "success"
+                                });
+                                navigate('/')
+                            }
+                        }
+                    )
+                    .catch(err => console.log(err, 'server faced a problem'))
             })
-            .catch(err => console.log(err));
-        // console.log(data);
+            .catch(err => console.log(err, "firebase faced a problem!"));
     }
 
     return (
