@@ -1,21 +1,28 @@
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
     return (
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className=" bg-slate-100">
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
+                    src={product.image}
+                    alt={product.title}
+                    className="" />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title">
-                    Shoes!
-                    <div className="badge badge-secondary">NEW</div>
+            <div className=" p-4 space-y-1">
+                <h2 className=" text-xl font-semibold flex justify-between">
+                    {product.title}
+                    <div className="badge badge-secondary">stock:{product.stock}</div>
                 </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 className=" font-medium">Price: $<span className=" text-orange-500">{product.price}</span></h2>
+                <div className=" flex gap-4 font-medium">
+                    <h2>Category: {product.category}</h2>
+                    <h2>Brand: {product.brand}</h2>
+                </div>
+
+                <h2 className=" text-sm italic">Description: {product.description}</h2>
                 <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                    <div className="btn btn-outline">Add to wishlist</div>
+                    <div className="btn btn-outline">Buy</div>
                 </div>
             </div>
         </div>

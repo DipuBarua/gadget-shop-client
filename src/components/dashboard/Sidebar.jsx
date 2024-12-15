@@ -44,8 +44,8 @@ const Sidebar = () => {
                     userData.role === 'seller' && sellerRoutes.map(route => <li
                         key={route.id}
                         className=" btn rounded-none px-2 border border-black">
-                        {route.icon}
-                        <NavLink to={route.route}>
+                        <NavLink to={route.route} className='flex gap-2'>
+                            {route.icon}
                             {route.title}
                         </NavLink>
                     </li>)
@@ -53,8 +53,10 @@ const Sidebar = () => {
                 }
 
                 <li className=" btn rounded-none px-2 border border-black">
-                    <FaHome />
-                    <NavLink to={'/'}>Home</NavLink>
+                    <NavLink to={'/'} className='flex gap-2'>
+                        <FaHome />
+                        Home
+                    </NavLink>
                 </li>
                 <li>
                     <NavLink onClick={() => handleLogOut()}>
