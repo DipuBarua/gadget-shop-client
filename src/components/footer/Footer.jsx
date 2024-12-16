@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="footer bg-neutral text-neutral-content p-10">
+        <footer className="footer bg-neutral text-neutral-content p-10 mt-7">
             <aside>
                 <img src="https://img.freepik.com/free-vector/electronic-gadgets-collection_1284-40723.jpg?t=st=1733927361~exp=1733930961~hmac=fc525908965454d63f2d0e337cc5bc0c83fc10b7b83b3805292dfc209f18709c&w=740" alt="" width={64} height={64} className=" rounded-full" />
                 <p>
