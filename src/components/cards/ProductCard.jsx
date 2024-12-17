@@ -1,5 +1,17 @@
+import axios from "axios";
+import useUserData from "../../hooks/useUserData";
 
 const ProductCard = ({ product }) => {
+    const { email } = useUserData();
+
+    const handleWishlist = async () => {
+        await axios.patch('http://localhost:4000/wishlist/add', {
+            userEmail: email,
+            productId: product._id
+        })
+            .then(res => console.log(res.data))
+    }
+
     return (
         <div className=" bg-slate-100 rounded-md border shadow-md">
 
@@ -28,7 +40,7 @@ const ProductCard = ({ product }) => {
                 </h2>
 
                 <div className="">
-                    <button className="btn btn-outline btn-sm mt-4 w-full rounded-none">Add to wishlist</button>
+                    <button onClick={handleWishlist} className="btn btn-outline btn-sm mt-4 w-full rounded-none">Add to wishlist</button>
                 </div>
             </div>
         </div>
