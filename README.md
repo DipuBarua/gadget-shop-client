@@ -1,2 +1,6 @@
 ## PROJECT: GADGET-SHOP
-- Live:
+- Live: https://gadget-shop-client-green.vercel.app/
+
+
+### Functionality:
+- 

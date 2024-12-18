@@ -1,15 +1,44 @@
 import axios from "axios";
 import useUserData from "../../hooks/useUserData";
+import Swal from "sweetalert2";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isInWishlist, setLatestData }) => {
     const { email } = useUserData();
 
     const handleWishlist = async () => {
-        await axios.patch('http://localhost:4000/wishlist/add', {
+        await axios.patch('https://gadget-shop-server-beta.vercel.app/wishlist/add', {
             userEmail: email,
             productId: product._id
         })
-            .then(res => console.log(res.data))
+            .then(res => {
+                if (res.data.modifiedCount == 1) {
+                    Swal.fire({
+                        title: "Success",
+                        text: "Added to wishlist",
+                        icon: "success",
+                        showConfirmButton: false,
+                    });
+                }
+            })
+    }
+
+
+    const handleRemoveFromWishlist = async () => {
+        await axios.patch('https://gadget-shop-server-beta.vercel.app/wishlist/remove', {
+            userEmail: email,
+            productId: product._id
+        })
+            .then(res => {
+                if (res.data.modifiedCount == 1) {
+                    Swal.fire({
+                        title: "Success",
+                        text: "Product removed from your wishlist",
+                        icon: "success",
+                        showConfirmButton: false,
+                    });
+                    setLatestData(prev => !prev);
+                }
+            })
     }
 
     return (
@@ -40,7 +69,13 @@ const ProductCard = ({ product }) => {
                 </h2>
 
                 <div className="">
-                    <button onClick={handleWishlist} className="btn btn-outline btn-sm mt-4 w-full rounded-none">Add to wishlist</button>
+                    {
+                        (isInWishlist) ?
+                            <button onClick={handleRemoveFromWishlist} className="btn btn-sm mt-4 w-full rounded-md bg-red-600 text-white">Remove from wishlist</button>
+                            :
+                            <button onClick={handleWishlist} className="btn btn-outline btn-sm mt-4 w-full rounded-none">Add to wishlist</button>
+
+                    }
                 </div>
             </div>
         </div>

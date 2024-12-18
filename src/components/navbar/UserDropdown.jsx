@@ -1,9 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
+import useUserData from "../../hooks/useUserData";
 
 const UserDropdown = () => {
     const { user, LogOut } = useAuth();
     const navigate = useNavigate();
+    const userData = useUserData();
 
     const handleLogOut = () => {
         LogOut();
@@ -12,7 +15,12 @@ const UserDropdown = () => {
 
     return (
         <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button">
+            <div tabIndex={0} role="button" className=" flex justify-center items-start pr-2 gap-1">
+                <div className=" badge border-none p-0 text-secondary rounded-full gap-1">
+                    <span>+{userData?.wishlist?.length}</span>
+                    <FaCartPlus />
+                </div>
+
                 <div className="avatar online">
                     <div className=" w-10 rounded-full">
                         <img src={`${user?.photoURL || "/profile.png"}`} />

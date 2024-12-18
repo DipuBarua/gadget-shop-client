@@ -11,6 +11,9 @@ import Overview from "../pages/dashboard/Overview";
 import PrivateRoute from "./privateRoute/PrivateRoute";
 import AddProduct from "../pages/dashboard/seller/AddProduct";
 import MyProducts from "../pages/dashboard/seller/MyProducts";
+import MyWishlist from "../pages/dashboard/buyer/MyWishlist";
+import BuyerRoute from "./privateRoute/BuyerRoute";
+import SellerRoute from "./privateRoute/SellerRoute";
 
 const routers = createBrowserRouter([
     {
@@ -53,11 +56,15 @@ const routers = createBrowserRouter([
             },
             {
                 path: "/dashboard/addproduct",
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: "/dashboard/myproducts",
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: "/dashboard/mywishlist",
+                element: <BuyerRoute><MyWishlist></MyWishlist></BuyerRoute>
             },
         ]
     }

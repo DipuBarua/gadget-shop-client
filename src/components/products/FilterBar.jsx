@@ -5,7 +5,7 @@ import { GrPowerReset } from "react-icons/gr";
 const FilterBar = ({ setBrand, setCategory, handleReload, uniqueBrand, uniqueCategory }) => {
 
     return (
-        <div className=" mt-7 bg-gray-300 h-full min-h-screen p-4 rounded-t-md divide-y-2">
+        <div className=" mt-7 bg-gray-300 h-full md:min-h-screen p-4 rounded-t-md divide-y-2">
             <div className=" flex justify-center items-center text-slate-600 gap-2 my-2">
                 <CiFilter size={24} />
                 <h1 className=" text-xl font-bold">Filter</h1>
@@ -37,24 +37,6 @@ const FilterBar = ({ setBrand, setCategory, handleReload, uniqueBrand, uniqueCat
                                     {item}
                                 </option>)
                         }
-                    </select>
-                </div>
-
-                <div className=" w-full">
-                    <select className="select select-bordered border border-black w-full max-w-xs">
-                        <option disabled selected>Low to High</option>
-                        <option value=''>item</option>
-                        <option value=''>item</option>
-                        <option value=''>item</option>
-                    </select>
-                </div>
-
-                <div className=" w-full">
-                    <select className="select select-bordered border border-black w-full max-w-xs">
-                        <option disabled selected>Low to High</option>
-                        <option value=''>item</option>
-                        <option value=''>item</option>
-                        <option value=''>item</option>
                     </select>
                 </div>
 

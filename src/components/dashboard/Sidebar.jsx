@@ -4,6 +4,7 @@ import { FaHome } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import useUserData from "../../hooks/useUserData";
 import { MdOutlineInventory2 } from "react-icons/md";
+import { FaCartPlus } from "react-icons/fa6";
 import { MdAddCard } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 
@@ -20,6 +21,16 @@ const sellerRoutes = [
         title: "Add Product",
         icon: <MdAddCard />
     }
+]
+
+const buyerRoutes = [
+    {
+        id: 1,
+        route: "/dashboard/mywishlist",
+        title: "My Wishlist",
+        icon: <FaCartPlus />
+    },
+
 ]
 
 const Sidebar = () => {
@@ -42,6 +53,18 @@ const Sidebar = () => {
 
                 {
                     userData.role === 'seller' && sellerRoutes.map(route => <li
+                        key={route.id}
+                        className=" btn rounded-none px-2 border border-black">
+                        <NavLink to={route.route} className='flex gap-2'>
+                            {route.icon}
+                            {route.title}
+                        </NavLink>
+                    </li>)
+
+                }
+
+                {
+                    userData.role === 'buyer' && buyerRoutes.map(route => <li
                         key={route.id}
                         className=" btn rounded-none px-2 border border-black">
                         <NavLink to={route.route} className='flex gap-2'>

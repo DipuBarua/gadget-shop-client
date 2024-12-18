@@ -26,7 +26,7 @@ const Products = () => {
   useEffect(() => {
     setLoading(true);
     const fetch = async () => {
-      axios.get(`http://localhost:4000/all-porducts?title=${search}&page=${page}&limit=${9}&sort=${sort}&category=${category}&brand=${brand}`)
+      axios.get(`https://gadget-shop-server-beta.vercel.app/all-porducts?title=${search}&page=${page}&limit=${9}&sort=${sort}&category=${category}&brand=${brand}`)
         .then(res => {
           console.log(res.data);
           setProducts(res.data.products);
@@ -73,8 +73,8 @@ const Products = () => {
           <SortByPrice setSort={setSort} />
         </div>
 
-        <div className=" grid grid-cols-12">
-          <div className=" col-span-2">
+        <div className=" grid md:grid-cols-12 gap-2">
+          <div className="md:col-span-2">
             <FilterBar
               setBrand={setBrand}
               setCategory={setCategory}
@@ -83,7 +83,7 @@ const Products = () => {
               uniqueCategory={uniqueCategory}
             />
           </div>
-          <div className=" col-span-10">
+          <div className="md:col-span-10">
             {
               loading ?
                 <Loading />
@@ -91,11 +91,11 @@ const Products = () => {
                 <>
                   {
                     products.length === 0 ?
-                      <div className=" flex justify-center items-center">
+                      <div className=" flex justify-center items-center min-h-screen">
                         <h1 className=" text-2xl font-semibold">No product found!</h1>
                       </div>
                       :
-                      <div className=" py-7 px-2 grid grid-cols-3 gap-4">
+                      <div className=" py-7 px-2 grid md:grid-cols-3 gap-4">
                         {
                           products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
                         }

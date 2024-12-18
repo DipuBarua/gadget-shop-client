@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             // jwt- post request, get token
             if (currentUser) {
-                axios.post(`http://localhost:4000/authentication`, {
+                axios.post(`https://gadget-shop-server-beta.vercel.app/authentication`, {
                     email: currentUser.email
                 })
                     .then(res => {

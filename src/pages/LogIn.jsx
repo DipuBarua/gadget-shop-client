@@ -29,7 +29,7 @@ const LogIn = () => {
                 </div>
 
 
-                <div className="card bg-base-100 w-1/3 shrink-0 shadow-2xl">
+                <div className="card bg-base-100 md:w-1/3 shrink-0 shadow-2xl">
 
                     <form onSubmit={handleSubmit(logInSubmit)} className="card-body">
 

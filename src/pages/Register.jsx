@@ -24,7 +24,7 @@ const Register = () => {
 
         CreateUser(data.email, data.password)
             .then(() => {
-                axios.post(`http://localhost:4000/users`, userData)
+                axios.post(`https://gadget-shop-server-beta.vercel.app/users`, userData)
                     .then(
                         res => {
                             console.log(res.data);
@@ -54,7 +54,7 @@ const Register = () => {
                 </div>
 
                 {/* Register form  */}
-                <div className="card bg-base-100 w-1/3 shrink-0 shadow-2xl">
+                <div className="card bg-base-100 md:w-1/3 shrink-0 shadow-2xl">
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="card-body">
